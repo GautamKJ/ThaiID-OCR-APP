@@ -327,7 +327,7 @@ body {
 /* MAIN */
 #content main {
 	width: 100%;
-	padding: 50px 50px;
+	padding: 5px 25px;
 	font-family: var(--poppins);
 	max-height: calc(100vh - 56px);
 	overflow-y: auto;
@@ -588,6 +588,17 @@ body {
 .col-6{
 	width: 100%;
 }
+.tableContainer {
+    height: 65vh;
+    overflow: auto;
+}
+
+.table {
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
 /* .response
 {
 	
