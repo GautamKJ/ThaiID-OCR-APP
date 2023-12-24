@@ -11,7 +11,7 @@ const userSchema= new Schema({
         type:String,
         required:true
     },
-    last_name:{
+    lastName:{
         type:String,
         required:true
     },
@@ -19,18 +19,20 @@ const userSchema= new Schema({
         type:String,
         required:true
     },
-    issue_date:{
+    issueDate:{
         type:String,
         required:true
     },
-    expiry_date:{
+    expiryDate:{
         type:String,
         required:true
     },
     status:{
        type:String,
-       required:true
+       required:true,
+       default:'Success'
     },
+    
     date:{
         type:Date,
         default:new Date

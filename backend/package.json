@@ -10,10 +10,13 @@
   "author": "Gautam Jha",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/vision": "^4.0.2",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongoose": "^6.7.0",
     "multer": "^1.4.5-lts.1",
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "path": "^0.12.7",
+    "router": "^1.3.8"
   }
 }
