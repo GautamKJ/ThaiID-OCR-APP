@@ -4,28 +4,28 @@ const userSchema= new Schema({
 
     identification_number:{
         type:String,
-        required:true
+        
     },
 
     first_name:{
         type:String,
-        required:true
+        
     },
     lastName:{
         type:String,
-        required:true
+        
     },
     dob:{
         type:String,
-        required:true
+        
     },
     issueDate:{
         type:String,
-        required:true
+        
     },
     expiryDate:{
         type:String,
-        required:true
+        
     },
     image:{
         type: String,
@@ -34,7 +34,6 @@ const userSchema= new Schema({
     },
     status:{
        type:String,
-       required:true,
        default:'Success'
     },
     

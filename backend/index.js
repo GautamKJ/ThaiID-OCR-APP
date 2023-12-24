@@ -1,10 +1,13 @@
 const express=require('express');
 const database = require('./db');
 require("dotenv").config();
+var cors = require('cors');
+
 const port= 8081;
 var app= express();
 
 
+app.use(cors());
 
 app.use(express.json());
 

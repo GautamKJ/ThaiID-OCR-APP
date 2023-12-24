@@ -8,17 +8,18 @@ const fs = require('fs');
 const CREDENTIAL = JSON.parse(
     JSON.stringify({
       // Your JSON key data
-      "type": "service_account",
-    "project_id": "ocrthai-409016",
-    "private_key_id": "0677f5329048cec5eba569d541e2d4bd95364d8c",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDRrUpJrjGagleI\nfLZa14OfXUSJd/A1xau/Wp3KvnUlNurHxvue9t8n6cCTyq3TCB+mHuFl85VCQrAk\nbqWPT8XOlxMSZdiPyrcxho5FCRGeMe5c9sJ3XqIUYeLfhF1lCj2OvP3I0Pqel5Bf\nLT64evMtXY7OkD9gF2v81mJh/W4GwHLFaR+PeH9D36wBDP+vR+b7fGUcMumrioU/\nxOhUgrtZR7A7MEKpGcWRa2HpVkJ5nM/8r78oryCUt/x8ArKSWuAiApTCOkiSocIj\nn04DrAnAfz8+ulG4kpwn75Wk9KzbNpO+f27B7HsAqZDhJ+FknBYYNvqi/F4PzQjG\nC4ohWhEfAgMBAAECggEAIknEJ2FmON34wi1MGss5zy1O4Gtt1jVG5+oXJLOu73uC\nuvxmDcb8PjLXwbNivUBhAJGgisNhv1itelUNG5mlf3+taD73F6iZpZkwmccpC5Af\nFTJrIbR8LSNxbjDfSanPiuXgBd9wJHrPlVOOTq0YfZeE8MWeVNtFAa9DSRf1pAJi\nWSykrvvza7La790aB9bFzvbw8dx2jh7waSaSabmh7Is6zwlzG56tSHXD/26n4OCY\nDTGzOkMk9YqjAau+RCnJF1fzMWGLLbNUQLeky/7GROKfvr4VohmUWzJKEraPJADv\nSPp26woBqkQbItz+SIJgrR5dZHM4cTplj3/IB+Qt9QKBgQD4GxrB7pd6O6aXwliZ\nSvOWmrhg+F3ytji5T2hOqPT0dBqW/PQdpyufJ0rsuVcuBNEMyjTEjIFRLxfceQUN\nKdnytMcht0gEh3FbwHnqwbRl3JTSwvKwt66pPzDucoPJxudpORcTt+qr9Tcvyoos\nHmieW8qouUvuX5NUB6C4lhenkwKBgQDYWSuiMl3xSDOR5ZTqYmpGQ6Ev7vHKS7Pj\nMdUJW7TtkWGV7Skbcnd2WU0gllcWeVCx4Vix9HfQgNaeLtZUbAB3LOlorxFSQzUp\nmx6ZekdunVw95TFdAktvm7CnJjIdn+kXJqJkLweTmX/v+gIlI/qtF21i/AYQwlDN\nQBNAnCmPxQKBgQDMHpCPCNp65+SRaoU16OIq/7O9o9i3PI/CdcAdJwgQrgzKN+Yn\nF0feMpeD1qAQ7kmHOjzbj7U8s3/wFWjAgbQb5/sElCOeBkiO8fXb2+2s+CNAmr7M\nAPKjr6d0JaajNQ9iFGQWBvP88Uur9/hhf8sWrfI3iescfGlbcsMZ2fIwHQKBgQCu\nB9zPllB3PKsvG0yU1iHC77gDhOQ+5HKJuZYy9vAtghrLrYC5sXRjYSZnpkfbri65\nSBo+2/ZdZKY/jFGgi1g8hYYkTV9TmvhyxXLx5qj7U93VdD4nISdpWgXaDyGVLwMj\nOlK64BHqKzn84lFDaxPElOnLDAwdAxJYaMiT2oqcOQKBgBfclXiJ361Fhx/Cj5tF\nGGF3LK8DEaYxnokTYpFxZGVnO49yi85tSEhQypx19Ra9s9jlaCagVgpsrxAylpRE\n/aTnQm9EvYN3EVvsEB1UMSoZ5V9YMAb1aLVjFIN+wI7SaGMqnbR1aVmX+aJEraCC\ni3G6D+vMr5iwROWbDMDSnaqa\n-----END PRIVATE KEY-----\n",
-    "client_email": "ocr-129@ocrthai-409016.iam.gserviceaccount.com",
-    "client_id": "113751486915530338081",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ocr-129%40ocrthai-409016.iam.gserviceaccount.com",
-    "universe_domain": "googleapis.com"
+      
+        "type": "service_account",
+        "project_id": "named-archway-409017",
+        "private_key_id": "6ce395e6958504cf0eb7a00cd539389e7bf875ef",
+        "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDPXdt3x1ADSNnp\n0hsEXrtEehoibdqYmdkRGIp/Rb0fjnJHkiZd83ijgPIc/CZrXei8JfJY4VKitgQf\nvLa5P8Zx2JNAoKYaaFK6Ityld1Q/oivQbR/kQ/6XmcTmsocGaF21GnmvcRYpWP5u\n2ktck2fIJLnIzw+x7EdV2Gmz3+H+yA8BU//mS9dkz8RT66RpQe8Xk3Va/Gx3ellE\n3+7u8r2T8UtJV27bwT0/wwVGusdhY4aYrbej70nS7vYYb0om0vguMlA3ZkJPKdAS\n2Ydc2AkxmpKKgWFbBKFJ5QdNv365+627HpfexgzPNMUGvOwqI+W/1FXBtnBcyw07\nXhdQ93uHAgMBAAECggEAH5kQsS7DfXdOD/gTuoBo5BAAXXtZ0jkB6j36v1a0G9Ph\nNrtex0rV+NbUOHXKW5VCuoYZvftk/nrieVI7PFKAfaaKbFBOdJBYUsQEf94wDfDl\n4OulRBYsUZN9J8jPvw/g1OYvi/vybDiDBLHqG+Aw8el5ZHpQzO7RFpP/Kgk/xEps\nj3OxPiq3D2lub17H0ID8t4RcxefhOMulpDZ+RXP+Ce6Ql3RU4654DvBnmX5TgHEj\n/TsUOx6s3/PzYoAUmLZGX7jFpafKy44svfmpZ6ngdvULGcrSZ1MZRYQiKVNuGyk6\nqo2GrMILKPJYJl8AcnSWY1sILFqWiFecC0cE+J5juQKBgQD/cnucCbq3oehCM+bN\nYYNtZEp02xwgIp6Xd2iTrtMhlsaDn0Ts/eDephMnBmHcfd+cTWOem99rUoOKjmxk\nqBnoyyNPZ8+ZRU2zHRfbE/+H3WS887kuHtk8SMKvNikRxHSgovN2iteLEjr7f2Oc\nne/c37Tcm2+idLHLqmGZh/OdYwKBgQDP0LzomnjpBMyljsp5CVAgBJbDPfOmO7sc\nyPFF1osIfKSpPl1Iz7Maz5O5ZAqwJdEQzASu8Kjb8po/It6hAxaiYwmrkD3bh9b2\nHnrx2YXLc9+l2iuDh1x8yVm5W1WZwzS3Qb5a2qjXZvUPMedGDz147XwwrYzb9wgd\nDEFH5q7EjQKBgQDR6+Ha9D/mIn680OwuAaHA5vctGtb9LZYIwU9Gdhf5dW+DwQIi\ng+wk7HO20U7gpOx7BToFoPC0wKVq2uoGugI4xZ8p5RS8TzCwLgtptQB8RZtAkEWw\nuhcprF2ZITgU6s4xKFhNJYJGPmAMR76zeTMh3xFBbdcKuT1XMphsVEYGIwKBgQCk\nIDhCAFXDus2hZ2+TPf6w+s7S7eey/vOdHTooLPPrRP2KyL1F1vueDhieT1t9mLBP\n8sE0JM9HvoeBm5l2UokawNsPS0D/U347LQFuZpwbfa1BQFgjbdFmoGMjV/X4FUpZ\n/StId+7nB+I9GO2N0FV9Xxo5G6fmxWf8AQTBs3eNtQKBgCW2cU1CT2CScvEAz+vz\nuU6IssL2X0IN/b8rvOpC8hn/mjqpWUtYybkT5Oxuuapztu5vMLagYIKzINz0zKPN\nqGl2vThZTDRJtXv0vvzBv2fk3ftM9B93xWrha4ExIipqqKOCzIZcb3qzDQQoJkX7\nkCGzet9LveD1aZx5M7/ITqWW\n-----END PRIVATE KEY-----\n",
+        "client_email": "dhruv-709@named-archway-409017.iam.gserviceaccount.com",
+        "client_id": "102749229370313380951",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+        "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dhruv-709%40named-archway-409017.iam.gserviceaccount.com",
+        "universe_domain": "googleapis.com"
     })
   );
   
@@ -56,6 +57,7 @@ var extractedInfo = {
     dob: '',
     issueDate: '',
     expiryDate: '',
+    status:'',
     image:''
   };
 const extractInfoFromOCR = (annotations) => {
@@ -73,6 +75,7 @@ const extractInfoFromOCR = (annotations) => {
         dob: '',
         issueDate: '',
         expiryDate: '',
+        status:'',
         image:''
       };
         
@@ -152,6 +155,11 @@ const detectText = async (file_path) => {
     }
   };
 
+
+
+
+
+
 router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
     console.log(req.file);
     try{
@@ -159,22 +167,39 @@ router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
         
  
      await detectText(req.file.path);
+     extractedInfo.image=req.file.filename;
+    //  Detection for card: logic is if identification_number is not found then failure
+
+    if(extractedInfo.identification_number=='')
+    {
+        extractedInfo.status='Failure';
+       const user = new User(extractedInfo);
+        const newuser= await user.save();
+        res.json("Cannot Identity Thai ID Card.");
+        return ;
+
+    }
+     
+    extractedInfo.status='Success';
     //  if user already present in database then update the existing detail
     console.log(req.file.filename);
-    extractedInfo.image=req.file.filename;
+   
     // console.log( extractedInfo.image);
      let user=await User.findOne({identification_number:extractedInfo.identification_number});
      if(user){
-
+      extractedInfo.status='Success';
         await User.replaceOne({ _id: user._id }, extractedInfo);
          res.json(user);
 
          return;
      }
+
+
      console.log("here");
+    //  Save in database
      user = new User(extractedInfo);
      const newuser= await user.save();
-    // console.log(extractedInfo);
+    
        res.json(newuser);
 
    
