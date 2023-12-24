@@ -157,6 +157,18 @@ router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
         
  
      await detectText(req.file.path);
+    //  if user already present the update the existing detail
+     let user=await User.findOne({identification_number:extractedInfo.identification_number});
+     if(user){
+
+        const updatedata={};
+        
+        await User.replaceOne({ _id: user._id }, extractedInfo);
+         res.json(user);
+
+         return;
+     }
+     console.log("here");
      user = new User(extractedInfo);
      const newuser= await user.save();
     // res.json(extractedInfo);

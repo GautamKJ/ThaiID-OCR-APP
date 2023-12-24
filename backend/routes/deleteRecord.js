@@ -4,10 +4,11 @@ const router = express.Router();
 
 
 
-router.post('/deleterecord', async (req,res)=>{
+router.post('/deleterecord:id', async (req,res)=>{
    
     try {
-        let users= await User.findOneAndDelete(req.body.identification_number);
+        
+        let users= await User.findOneAndDelete(req.params.id);
         res.json(users);
     } catch (error) {
         console.error(error.message);
