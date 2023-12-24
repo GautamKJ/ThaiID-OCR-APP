@@ -30,7 +30,7 @@ const CREDENTIAL = JSON.parse(
   };
   
   const client = new vision.ImageAnnotatorClient(Config);
-// ocr();
+
 
 // createUser.js
 console.log('CreateUser route file executed.');
@@ -56,6 +56,7 @@ var extractedInfo = {
     dob: '',
     issueDate: '',
     expiryDate: '',
+    image:''
   };
 const extractInfoFromOCR = (annotations) => {
    
@@ -72,6 +73,7 @@ const extractInfoFromOCR = (annotations) => {
         dob: '',
         issueDate: '',
         expiryDate: '',
+        image:''
       };
         
     const lines = annotations[0].description.split('\n');
@@ -157,12 +159,13 @@ router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
         
  
      await detectText(req.file.path);
-    //  if user already present the update the existing detail
+    //  if user already present in database then update the existing detail
+    console.log(req.file.filename);
+    extractedInfo.image=req.file.filename;
+    // console.log( extractedInfo.image);
      let user=await User.findOne({identification_number:extractedInfo.identification_number});
      if(user){
 
-        const updatedata={};
-        
         await User.replaceOne({ _id: user._id }, extractedInfo);
          res.json(user);
 
@@ -171,7 +174,7 @@ router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
      console.log("here");
      user = new User(extractedInfo);
      const newuser= await user.save();
-    // res.json(extractedInfo);
+    // console.log(extractedInfo);
        res.json(newuser);
 
    

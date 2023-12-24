@@ -4,7 +4,7 @@ const router = express.Router();
 
 
 
-router.post('/fetchrecord', async (req,res)=>{
+router.get('/fetchrecord', async (req,res)=>{
    
     try {
         let users= await User.find();
