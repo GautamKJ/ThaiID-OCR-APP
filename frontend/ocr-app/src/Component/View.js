@@ -33,8 +33,9 @@ export default function View() {
 		console.log("filterdata "+filterdata);
 		// filter the items using the detail state
 		if(filterdata=='issue Date'){
+			console.log("afasd");
 		const filteredItems = detail.filter((user) =>
-		(user[filterdata]).toLowerCase().includes(searchTerm.toLowerCase())
+		(user.issueDate).toLowerCase().includes(searchTerm.toLowerCase())
 		
 	  );
 	  setFilteredUsers(filteredItems);
@@ -64,16 +65,11 @@ export default function View() {
 			
 			const response=await fetch(`http://localhost:8081/api/deleterecord/${id}`,{
 			  method:"POST",
-			  headers:{
-				// 'content-Type':'application/json',
-				// 'auth-token':localStorage.getItem('token')
-			  },
-			//   body:JSON.stringify({complain_status:currstatus})
-			  
+			
 			});
-			// let json= await response.json();
+			
 			fetchdata();
-			// console.log(json);
+			
 		}
 		catch (error) {
  
@@ -88,10 +84,7 @@ export default function View() {
 	   
 		  const response=await fetch("http://localhost:8081/api/fetchrecord",{
 			method:"GET",
-			headers:{
-			//   'content-Type':'application/json',
-			//   'auth-token':localStorage.getItem('token')
-			},
+			
 			
 		  });
 		  let json= await response.json();
@@ -165,7 +158,7 @@ export default function View() {
 							<tr key={index}>
 								<td>{index+1}</td>
 								<td>
-									<img src="https://www.sinosecu.com.cn/upload/20211018/KXa2NPVvXF278Wr6gTR.jpg"/>
+									{/* <img src="https://www.sinosecu.com.cn/upload/20211018/KXa2NPVvXF278Wr6gTR.jpg"/> */}
 									<p>{data.first_name + " "+data.lastName
 									}</p>
 								</td>

@@ -24,12 +24,9 @@ export default function Sidebar() {
 
 
 	<section id="sidebar">
-		<Link to="/dashboard" classNameName="brand">
-			
-			<span className="text">แบบไทย ID</span>
-		</Link>
+		
 		<ul className="side-menu top">
-			<li className="active">
+			<li>
 				<Link to="/dashboard">
 					<i className='bx bxs-dashboard' ></i>
 					<span className="text">Dashboard</span>
@@ -37,16 +34,11 @@ export default function Sidebar() {
 			</li>
 			<li>
 				<Link to="/view">
-					<i className='bx bxs-shopping-bag-alt' ></i>
-					<span className="text">View</span>
-				</Link>
-			</li>
-			<li>
-				<Link to="#">
-					<i className='bx bxs-doughnut-chart' ></i>
+				<i className='bx bxs-doughnut-chart' ></i>
 					<span className="text">History</span>
 				</Link>
 			</li>
+			
 			
 			
 		</ul>

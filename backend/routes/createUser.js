@@ -192,34 +192,43 @@ router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
 
      
      extractedInfo.image=req.file.filename;
-    //  Detection for card: logic is if identification_number is not found then failure
+     const matchVal=extractedInfo.identification_number;
+
+    //  IF any field is missing mark it true and latter check if Detection is true means some field in missing else everything is fine
+    // Doing this here as later we encrypted the values 
+
+     const Detection=extractedInfo.identification_number=='' ||
+     extractedInfo.first_name== ''||
+     extractedInfo.lastName== ''||
+     extractedInfo.dob== ''||
+     extractedInfo.issueDate== ''||
+     extractedInfo.expiryDate== '';
 
     
-
-   
-
     for (const prop in extractedInfo) {
-    let cipher = crypto.createCipheriv(algorithm, Securitykey, initVector);
-      // console.log("prop ",prop,+" " +extractedInfo[prop]);
-      if(prop=='status' || prop=='image')
-        continue;
-      if(prop=='iv')
-      {extractedInfo[prop]=initVector;
-        continue;
+      let cipher = crypto.createCipheriv(algorithm, Securitykey, initVector);
+        // console.log("prop ",prop,+" " +extractedInfo[prop]);
+        if(prop=='status' || prop=='image')
+          continue;
+        if(prop=='iv')
+        {extractedInfo[prop]=initVector;
+          continue;
+        }
+        let encryptedData = cipher.update(extractedInfo[prop], "utf-8", "hex");
+        encryptedData += cipher.final("hex");
+        extractedInfo[prop]=encryptedData;
+        console.log("prop ",prop,+" --> "+extractedInfo[prop]);
       }
-      let encryptedData = cipher.update(extractedInfo[prop], "utf-8", "hex");
-      encryptedData += cipher.final("hex");
-      extractedInfo[prop]=encryptedData;
-      console.log("prop ",prop,+" --> "+extractedInfo[prop]);
-    }
-    
-
-    if(extractedInfo.identification_number=='')
+      
+      
+  
+      //   Detection for card: logic is if identification_number is not found then failure
+    if( Detection==true) 
     {
       extractedInfo.status='Failure';
        const user = new User(extractedInfo);
         const newuser= await user.save();
-        res.json("Cannot Identity Thai ID Card.");
+        res.json("Cannot Identity Thai ID Card. As somefield is missing");
         return ;
 
     }
@@ -233,6 +242,8 @@ router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
      if(user){
       extractedInfo.status='Success';
         await User.replaceOne({ _id: user._id }, extractedInfo);
+        delete user.iv;
+        
          res.json(user);
 
          return;
@@ -243,7 +254,8 @@ router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
     //  Save in database
      user = new User(extractedInfo);
      const newuser= await user.save();
-    
+     delete newuser.iv;
+        console.log("USER ",newuser);
        res.json(newuser);
 
    

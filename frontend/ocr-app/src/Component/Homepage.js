@@ -17,6 +17,19 @@ export default function Homepage() {
 	{
 		e.preventDefault();
 		if (e.target.files.length) {
+			const selectedFile = e.target.files[0];
+			// Handle Image size
+			if (selectedFile) {
+				const fileSize = selectedFile.size / 1024 / 1024; // Size in MB
+		  
+				if (fileSize > 2) {
+				  alert('Please select an image with a size less than 2MB.');
+				  
+				  
+				  return;
+				}
+
+			}
 			setImage({
 			  preview: URL.createObjectURL(e.target.files[0]),
 			  raw: e.target.files[0]
@@ -79,8 +92,8 @@ export default function Homepage() {
 						<form onSubmit={onsubmit} class="input-group mb-5">
 							<input type="file" class="form-control" name="uploadedimage" onChange={handleOnClick} aria-describedby="inputGroupFileAddon03" aria-label="Upload" accept=".bmp, .jpg, .png, .pbm, .webp"/>
 						
-					
-							<button type="submit" id="cbtn" class="btn btn-primary">
+					{/* Disable the button when no file is selected */}
+							<button type="submit" id="cbtn" class="btn btn-primary" disabled={image.preview === ''}   >
 								<span id="l-spinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
 								Recognize text
 							</button>
