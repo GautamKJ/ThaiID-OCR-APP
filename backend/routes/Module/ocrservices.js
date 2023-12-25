@@ -36,14 +36,27 @@ const Config = {
   },
 };
 var isThai=false;
+var extractedData = {
+    identification_number: 'undefined',
+    first_name: 'undefined',
+    lastName: 'undefined',
+    dob: 'undefined',
+    issueDate: 'undefined',
+    expiryDate: 'undefined',
+    status:'undefined',
+    image:'undefined',
+    isvalid:'false'
+    
+  };
 const client = new vision.ImageAnnotatorClient(Config);
 
-const extractInfoFromOCR = (annotations) => {
+
+const extractInfoFromOCR = async (annotations) => {
    
    
 
     console.log('Extracted Text :', annotations[0].description);
-    extractedInfo = {
+    extractedData = {
         identification_number: 'undefined',
         first_name: 'undefined',
         lastName: 'undefined',
@@ -63,7 +76,7 @@ let prev_line='';
       isThai=isThaiWord(lines[0][0]);
       console.log("isThia"+isThai);
       if(isThai)
-      extractedInfo.isvalid='true';
+      extractedData.isvalid='true';
     
     
   
@@ -75,7 +88,7 @@ let prev_line='';
 
         const idCardNumberMatch = line.match(/(\d{1} \d{4} \d{5} \d{2} \d{1})/);
         if (idCardNumberMatch !== null) {
-          extractedInfo.identification_number = idCardNumberMatch[0];
+            extractedData.identification_number = idCardNumberMatch[0];
         }
         
   
@@ -83,23 +96,23 @@ let prev_line='';
         const nameMatch = line.match(/Name (.+)/);
         
         if(nameMatch!=null)
-        extractedInfo.first_name = nameMatch[1];
+        extractedData.first_name = nameMatch[1];
     //   }
   
       
         const lastNameMatch = line.match(/Last name (.+)/);
         // console.log("NAme ",lastNameMatch);
         if(lastNameMatch!=null)
-        extractedInfo.lastName = lastNameMatch ? lastNameMatch[1] : 'undefined';
+        extractedData.lastName = lastNameMatch ? lastNameMatch[1] : 'undefined';
       
         const issueDateMatch = line.match(/(\d+ [A-Z][a-z]+ \d{4})/);
         // console.log("exc ",expiryDateMatch);
-        if(issueDateMatch!=null && extractedInfo.issueDate=='undefined' && extractedInfo.dob!='undefined')
-        extractedInfo.issueDate =issueDateMatch[1];
+        if(issueDateMatch!=null && extractedData.issueDate=='undefined' && extractedData.dob!='undefined')
+        extractedData.issueDate =issueDateMatch[1];
       
         const dobMatch = line.match(/Date of Birth (\d+ \S+ \d{4})/);
-        if(dobMatch!=null && extractedInfo.dob=='undefined')
-        extractedInfo.dob = dobMatch ? dobMatch[1] : 'undefined';
+        if(dobMatch!=null && extractedData.dob=='undefined')
+        extractedData.dob = dobMatch ? dobMatch[1] : 'undefined';
       
   
     
@@ -108,21 +121,35 @@ let prev_line='';
         const expiryDateMatch = line.match(/(\d+ \S+ \d{4})/);
         // console.log("exc ",expiryDateMatch);
         if(expiryDateMatch!=null)
-        extractedInfo.expiryDate =expiryDateMatch[1];
+        extractedData.expiryDate =expiryDateMatch[1];
     //   }
       prev_line=line;
     });
-  
-    return extractedInfo;
+    
+    
+    return extractedData;
     
   };
 
 const detectText = async (fileBuffer) => {
   try {
+    extractedData = {
+        identification_number: 'undefined',
+        first_name: 'undefined',
+        lastName: 'undefined',
+        dob: 'undefined',
+        issueDate: 'undefined',
+        expiryDate: 'undefined',
+        status:'undefined',
+        image:'undefined',
+        isvalid:'false'
+        
+      };
+    //   console.log("fileBUff" +fileBuffer);
     const [result] = await client.textDetection(fileBuffer);
     const annotations = result.textAnnotations;
     const extractedInfo =await extractInfoFromOCR(annotations);
-    return extractedInfo;
+    return  extractedInfo;
   } catch (error) {
     console.error('Error:', error.message);
     throw error;

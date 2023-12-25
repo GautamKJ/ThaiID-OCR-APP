@@ -34,9 +34,9 @@ router.get('/fetchrecord', async (req,res)=>{
             
         }
         // Sort the data to fetch based on how recently it is store in database
-        // const reversedrecords = records.reverse();
-        // res.json(reversedrecords);
-        res.json(records);
+        const reversedrecords = records.reverse();
+        res.json(reversedrecords);
+        // res.json(records);
         
         
     } catch (error) {
