@@ -310,7 +310,8 @@ body {
 	color: black;
 	padding: 5px 5px;
 	text-decoration: none;
-	border-bottom: 1px solid blue;
+	cursor: pointer;
+	border-bottom: 1px solid var(--blue);
 	display: block;
   }
   
@@ -597,6 +598,16 @@ body {
     position: sticky;
     top: 0;
     width: 100%;
+}
+.form-input input{
+	padding: 5px;
+	border-radius:10px ;
+	/* margin-right:20px ; */
+
+}
+.head_nav
+{
+	margin-right:50px ;
 }
 
 /* .response

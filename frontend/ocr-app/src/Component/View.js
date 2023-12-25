@@ -8,6 +8,54 @@ export default function View() {
 	// set image
 	const[image,setImage]=useState();
 
+	// state for search item (filter)
+	const [searchItem, setSearchItem] = useState([])
+
+	// set the initial state of filteredUsers to an empty array
+	const [filteredUsers, setFilteredUsers] = useState([])
+
+	// set the initial filter on first_name +lastName'
+
+	const [filterdata,setFilterdata]=useState('Status');
+
+	const handleSelectFilter=(e)=>{
+		console.log("filteSelect",e.target.innerText)
+		const dropdown = document.querySelector('.dropdown-content');
+		// dropdown.style.display = 'none';
+		// dropdown.setAttribute('display','none')
+		setFilterdata(e.target.innerText);
+	}
+
+
+	const handleInputChange = (e) => { 
+		const searchTerm = e.target.value;
+		setSearchItem(searchTerm)
+		console.log("filterdata "+filterdata);
+		// filter the items using the detail state
+		if(filterdata=='issue Date'){
+		const filteredItems = detail.filter((user) =>
+		(user[filterdata]).toLowerCase().includes(searchTerm.toLowerCase())
+		
+	  );
+	  setFilteredUsers(filteredItems);
+		}
+
+		if(filterdata=='Expiry Date'){
+			const filteredItems = detail.filter((user) =>
+			(user.expiryDate).toLowerCase().includes(searchTerm.toLowerCase())
+		  );
+		  setFilteredUsers(filteredItems);
+			}
+
+			if(filterdata=='Status'){
+				const filteredItems = detail.filter((user) =>
+				(user.status).toLowerCase().includes(searchTerm.toLowerCase())
+			  );
+			  setFilteredUsers(filteredItems);
+				}
+	
+	  
+	  }
 	// delete record
 
 	const deleteItem=async(id)=>{
@@ -48,7 +96,7 @@ export default function View() {
 		  });
 		  let json= await response.json();
 		  setDetail(json);
-		  
+		  setFilteredUsers(json)
 		  console.log(detail);
 		 
 		  
@@ -74,28 +122,31 @@ export default function View() {
 
 			<div class="table-data">
 				<div class="order">
-					<div class="head">
+					<div class="head head_nav">
 						<h3>Records</h3>
-                        <form action="#">
+                        
                             <div class="form-input">
-                                <input type="search" placeholder="Search..."/>
-                                <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+                                <input type="search" placeholder="Type to search"  value={searchItem}
+        onChange={handleInputChange}/>
+                                
                                 
                             </div>
-                        </form>
+                        
 						<div class="dropdown" >
-                            <button class="dropbtn"><i class='bx bx-filter' ></i></button>
-                            <div class="dropdown-content">
+                            <button class="dropbtn" ><i class='bx bx-filter' ></i></button>
+                            <div class="dropdown-content" value={filterdata} onClick={handleSelectFilter} >
                                 
-                              <li>Link 1</li>
-                              <li>Link 2</li>
-                              <li>Link 3</li>
+                              <li>issue Date</li>
+                              <li>Expiry Date</li>
+                              <li>Status</li>
                             </div>
                           </div>
 						
                            
 					</div>
-					{ detail.length>0 && 
+					{filteredUsers.length === 0
+        ? <p>No users found</p>
+        :
 					<div class="tableContainer">
 					<table>
 						<thead>
@@ -109,7 +160,7 @@ export default function View() {
 						</thead>
 						<tbody >
 							{
-								detail.map((data,index)=>{
+								filteredUsers.map((data,index)=>{
 									return (
 							<tr key={index}>
 								<td>{index+1}</td>
@@ -119,7 +170,7 @@ export default function View() {
 									}</p>
 								</td>
                                 <td>{data.issueDate}</td>
-                                <td>{data.dob}</td>
+                                <td>{data.expiryDate}</td>
 								
 								<td><span class="status completed"  >{data.status}</span></td>
                      <td ><button onClick={async() => await deleteItem(data._id)} ><i class='bx bxs-trash' ></i></button></td>
