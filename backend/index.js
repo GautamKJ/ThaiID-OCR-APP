@@ -3,7 +3,8 @@ const database = require('./db');
 require("dotenv").config();
 var cors = require('cors');
 
-const port= 8081;
+
+const PORT= process.env.PORT || 8081;
 var app= express();
 
 
@@ -19,6 +20,6 @@ app.use('/api/', require('./routes/deleteRecord'));
 
 app.listen(port, function () {
  
-    console.log("App listening at http://localhost:",port);
+    console.log("App listening at http://localhost:",PORT);
  })
  
