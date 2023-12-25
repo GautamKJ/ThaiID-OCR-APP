@@ -20,7 +20,7 @@ export default function View() {
 
 	const handleSelectFilter=(e)=>{
 		console.log("filteSelect",e.target.innerText)
-		const dropdown = document.querySelector('.dropdown-content');
+		// const dropdown = document.querySelector('.dropdown-content');
 		// dropdown.style.display = 'none';
 		// dropdown.setAttribute('display','none')
 		setFilterdata(e.target.innerText);

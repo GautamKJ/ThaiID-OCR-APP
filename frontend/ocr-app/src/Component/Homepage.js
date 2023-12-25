@@ -8,6 +8,10 @@ export default function Homepage() {
 
 	// state for loading
 	const [loading,setLoading]=useState(false);
+	const [jsonData, setJsonData] = useState(null);
+	const [result,setResult]=useState({
+		identification_number:'', first_name:'', lastName:'', dob:'', issueDate:'', expiryDate:'', image:'', status:'',
+	});
 
 	const handleOnClick=(e)=>
 	{
@@ -41,7 +45,13 @@ export default function Homepage() {
 			});
 			let json= await response.json();
 		console.log(json);
+		setJsonData(json);
 		spinner.classList.add('d-none');
+		//  setResult({
+		// 	identification_number:json.identification_number, first_name:json.first_name, lastName:json.lastName, dob:json.dob,
+		// 	 issueDate:json.issueDate, expiryDate:json.expiryDate, status:json.status,
+		// });
+		// console.log("result ",result)
 		setLoading(false);
 		  
 		  
@@ -49,7 +59,7 @@ export default function Homepage() {
 	}
 	catch(err)
 	{
-		
+			
 	}
 }
 
@@ -78,14 +88,14 @@ export default function Homepage() {
 					<div class="col-6 upload_img">
 						<div class="card img_card left">
 							<img id="i-img"  src={image.preview} class="card-img-top" alt="Image"/>
-						</div>
-						
-						<div class="right">
-							<pre id="o-art">
-								{
-									"asdflk"
-								}
-							</pre>
+								<p className='result_text'>Result</p>
+							<div className='resultshow'>
+							{jsonData==null?"No Data": (
+        <pre>
+          {JSON.stringify(jsonData, null, 2)}
+        </pre>
+      )}
+							</div>
 						</div>
 						
 						
