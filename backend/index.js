@@ -18,7 +18,7 @@ app.use('/api/', require('./routes/createUser'));
 app.use('/api/', require('./routes/fetchRecord'));
 app.use('/api/', require('./routes/deleteRecord'));
 
-app.listen(port, function () {
+app.listen(PORT, function () {
  
     console.log("App listening at http://localhost:",PORT);
  })
