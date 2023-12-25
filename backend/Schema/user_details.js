@@ -41,7 +41,8 @@ const userSchema= new Schema({
         type:Date,
         default:new Date
         
-    }
+    },
+    iv:{type:Buffer},
 
 })
 

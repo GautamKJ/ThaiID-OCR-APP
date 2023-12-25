@@ -5,6 +5,26 @@ const multer=require('multer');
 const vision = require('@google-cloud/vision');
 const fs = require('fs');
 
+
+// crypto module
+const crypto = require("crypto");
+
+const algorithm = "aes-256-cbc"; 
+
+// generate 16 bytes of random data
+
+// protected data
+
+// secret key generate 32 bytes of random data
+const Securitykey = "@s!8h0ie2#89m-_=~g>{p6./R02A#srk";
+
+
+
+let initVector = crypto.randomBytes(16);
+let cipher = crypto.createCipheriv(algorithm, Securitykey, initVector);
+       
+
+
 const CREDENTIAL = JSON.parse(
     JSON.stringify({
       // Your JSON key data
@@ -58,7 +78,8 @@ var extractedInfo = {
     issueDate: '',
     expiryDate: '',
     status:'',
-    image:''
+    image:'',
+    iv:''
   };
 const extractInfoFromOCR = (annotations) => {
    
@@ -76,7 +97,8 @@ const extractInfoFromOCR = (annotations) => {
         issueDate: '',
         expiryDate: '',
         status:'',
-        image:''
+        image:'',
+        iv:''
       };
         
     const lines = annotations[0].description.split('\n');
@@ -167,12 +189,34 @@ router.post('/create_user',upload.single('uploadedImage'), async(req,res)=>{
         
  
      await detectText(req.file.path);
+
+     
      extractedInfo.image=req.file.filename;
     //  Detection for card: logic is if identification_number is not found then failure
 
+    
+
+   
+
+    for (const prop in extractedInfo) {
+    let cipher = crypto.createCipheriv(algorithm, Securitykey, initVector);
+      // console.log("prop ",prop,+" " +extractedInfo[prop]);
+      if(prop=='status' || prop=='image')
+        continue;
+      if(prop=='iv')
+      {extractedInfo[prop]=initVector;
+        continue;
+      }
+      let encryptedData = cipher.update(extractedInfo[prop], "utf-8", "hex");
+      encryptedData += cipher.final("hex");
+      extractedInfo[prop]=encryptedData;
+      console.log("prop ",prop,+" --> "+extractedInfo[prop]);
+    }
+    
+
     if(extractedInfo.identification_number=='')
     {
-        extractedInfo.status='Failure';
+      extractedInfo.status='Failure';
        const user = new User(extractedInfo);
         const newuser= await user.save();
         res.json("Cannot Identity Thai ID Card.");
