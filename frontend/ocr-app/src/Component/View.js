@@ -150,7 +150,7 @@ export default function View() {
 						<thead>
 							<tr>
 								<th>S.No</th>
-								<th>ID Number</th>
+								
 								<th>User</th>
 								<th>Issue Date</th>
                                 <th>Expiry Date</th>
@@ -163,7 +163,7 @@ export default function View() {
 									return (
 							<tr key={index}>
 								<td>{index+1}</td>
-								<td>{data.identification_number}</td>
+								
 								<td>
 									{data.first_name}
 
