@@ -145,6 +145,7 @@ export default function View() {
 						<thead>
 							<tr>
 								<th>S.No</th>
+								<th>ID Number</th>
 								<th>User</th>
 								<th>Issue Date</th>
                                 <th>Expiry Date</th>
@@ -157,10 +158,10 @@ export default function View() {
 									return (
 							<tr key={index}>
 								<td>{index+1}</td>
+								<td>{data.identification_number}</td>
 								<td>
-									{/* <img src="https://www.sinosecu.com.cn/upload/20211018/KXa2NPVvXF278Wr6gTR.jpg"/> */}
-									<p>{data.first_name + " "+data.lastName
-									}</p>
+									{data.first_name}
+
 								</td>
                                 <td>{data.issueDate}</td>
                                 <td>{data.expiryDate}</td>

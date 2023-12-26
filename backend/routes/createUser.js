@@ -6,7 +6,7 @@ const multer = require('multer');
 const fs = require('fs');
 const crypto = require('crypto');
 const { detectText, encryptData } = require('./Module/ocrservices'); 
-
+const _ = require('lodash');
 // Store the Image in uploadss
 const storage=multer.diskStorage({
     destination:(req,file,cb)=>{
@@ -29,10 +29,14 @@ router.post('/create_user', upload.single('uploadedImage'), async (req, res) => 
   console.log(req.file);
   try {
     const fileBuffer = await fs.readFileSync(req.file.path);
-    const extractedInfo = await detectText(fileBuffer);
+    const userObject = await detectText(fileBuffer);
     
     // Make a copy of the extractedInfo object
-    const userObject = extractedInfo ;
+    userObject.image = req.file.filename;
+
+    // userObject encrypted that will save in database and extractedInfo will be send as a result to user on their page
+    const extractedInfo = _.cloneDeep(userObject) ;
+    
 
     userObject.image = req.file.filename;
     
@@ -63,9 +67,10 @@ router.post('/create_user', upload.single('uploadedImage'), async (req, res) => 
     let user = await User.findOne({ identification_number: userObject.identification_number });
     if (user && userObject.identification_number!='c46527a841911c8c2b1111928a097d23' ) {
       userObject.status = 'Success';
+      extractedInfo.status='Success';
       await User.replaceOne({ _id: user._id }, userObject);
-      console.log("Update" + user);
-      res.json(user);
+      console.log("Update");
+      res.json(extractedInfo);
       return;
     }
 
@@ -73,6 +78,7 @@ router.post('/create_user', upload.single('uploadedImage'), async (req, res) => 
     if (Detection) {
       console.log("Fail");
       userObject.status = 'Failure';
+      extractedInfo.status='Failure';
       const newUser = new User(userObject);
       const savedUser = await newUser.save();
 
@@ -84,10 +90,12 @@ router.post('/create_user', upload.single('uploadedImage'), async (req, res) => 
       return;
     } else {
       userObject.status = 'Success';
+      extractedInfo.status='Success';
 
       console.log("Save");
       if (!isvalid) {
         userObject.status = 'Failure';
+        extractedInfo.status='Failure';
       }
       // Save in the database
       const newUser = new User(userObject);
@@ -97,7 +105,7 @@ router.post('/create_user', upload.single('uploadedImage'), async (req, res) => 
       }
       console.log('USER', savedUser);
 
-      res.json(savedUser);
+      res.json(extractedInfo);
     }
   } catch (errors) {
     console.error(errors.message);
