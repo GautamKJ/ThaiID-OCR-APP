@@ -18,6 +18,11 @@ export default function View() {
 
 	const [filterdata,setFilterdata]=useState('Status');
 
+	useEffect(()=>{
+		document.title='History';
+	  },[])
+
+
 	const handleSelectFilter=(e)=>{
 		console.log("filteSelect",e.target.innerText)
 		// const dropdown = document.querySelector('.dropdown-content');

@@ -13,6 +13,10 @@ export default function Homepage() {
 		identification_number:'', first_name:'', lastName:'', dob:'', issueDate:'', expiryDate:'', image:'', status:'',
 	});
 
+	useEffect(()=>{
+		document.title='Dashboard';
+	  },[])
+
 	const handleOnClick=(e)=>
 	{
 		e.preventDefault();
