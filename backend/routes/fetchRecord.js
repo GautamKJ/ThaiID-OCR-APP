@@ -47,4 +47,26 @@ router.get('/fetchrecord', async (req,res)=>{
 })
 
 
+// SWAGGER
+
+/**
+ * @swagger
+ * /api/fetchrecord:
+ *   get:
+ *     summary: Fetch all records
+ *     responses:
+ *       200:
+ *         description: Successful response
+ *         content:
+ *           application/json:
+ *             example:
+ *               - identification_number: "1234"
+ *                 first_name: "John"
+ *                 lastName: "Doe"
+ *                 issueDate: "2022-01-01"
+ *                 expiryDate: "2022-12-31"
+ *                 status: "Success"
+ *                 image: "example.jpg"
+ */
+
 module.exports = router;

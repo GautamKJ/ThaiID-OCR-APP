@@ -113,7 +113,47 @@ router.post('/create_user', upload.single('uploadedImage'), async (req, res) => 
   }
 });
 
+// SWAGGER
 
+/**
+ * @swagger
+* /api/create_user:
+ *   post:
+ *     summary: Create a user based on Thai ID card image
+ *     consumes:
+ *       - multipart/form-data
+ *     parameters:
+ *       - name: uploadedImage
+ *         in: formData
+ *         type: file
+ *         description: Thai ID card image
+ *     responses:
+ *       200:
+ *         description: User creation successful
+ *         schema:
+ *           type: object
+ *           properties:
+ *             identification_number:
+ *               type: string
+ *             first_name:
+ *               type: string
+ *             lastName:
+ *               type: string
+ *             dob:
+ *               type: string
+ *             issueDate:
+ *               type: string
+ *             expiryDate:
+ *               type: string
+ *             status:
+ *               type: string
+ *             image:
+ *               type: string
+ *       400:
+ *         description: Bad request or missing fields
+ *       500:
+ *         description: Internal server error
+ */
 module.exports = router;
 
 

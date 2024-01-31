@@ -4,12 +4,35 @@ require("dotenv").config();
 const path=require('path');
 var cors = require('cors');
 
+const swaggerJsdoc = require('swagger-jsdoc');
+const swaggerUi = require('swagger-ui-express');
 
 const PORT= process.env.PORT || 8081;
 var app= express();
 
 
 app.use(cors());
+
+
+// SWAGGER
+
+const swaggerOptions = {
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Your API Documentation',
+        version: '1.0.0',
+        description: 'API documentation for your application.',
+      },
+    },
+    // Paths to files containing OpenAPI definitions
+    apis: ['./routes/*.js'], // assuming your route files are in a 'routes' directory
+  };
+  
+  const swaggerSpec = swaggerJsdoc(swaggerOptions);
+  
+  // Serve Swagger UI
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 
 
