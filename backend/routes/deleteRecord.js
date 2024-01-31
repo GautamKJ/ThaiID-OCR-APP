@@ -10,7 +10,7 @@ router.delete('/deleterecord/:id', async (req,res)=>{
         
         let users= await User.findOneAndDelete({ _id: req.params.id });
         
-        if (!user) {
+        if (!users) {
             return res.status(404).json({ msg: 'User not found' });
         }
 
