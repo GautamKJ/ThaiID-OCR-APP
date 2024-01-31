@@ -53,7 +53,7 @@ export default function Homepage() {
 			const formData = new FormData();
 			formData.append("uploadedImage", image.raw);
 		
-		const response=	await fetch("https://thai-ocr-zf8n.onrender.com//api/create_user", {
+		const response=	await fetch("https://thai-ocr-zf8n.onrender.com/api/create_user", {
 			  method: "POST",
 			  headers: {
 				// 'Content-Type': `multipart/form-data; boundary=${formData._boundary}`,

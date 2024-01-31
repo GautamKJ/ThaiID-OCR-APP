@@ -68,7 +68,7 @@ export default function View() {
 		// window.alert(id);
 		try {
 			
-			const response=await fetch(`https://thai-ocr-zf8n.onrender.com//api/deleterecord/${id}`,{
+			const response=await fetch(`https://thai-ocr-zf8n.onrender.com/api/deleterecord/${id}`,{
 			  method:"POST",
 			
 			});
@@ -87,7 +87,7 @@ export default function View() {
 	
 		try {
 	   
-		  const response=await fetch("https://thai-ocr-zf8n.onrender.com//api/fetchrecord",{
+		  const response=await fetch("https://thai-ocr-zf8n.onrender.com/api/fetchrecord",{
 			method:"GET",
 			
 			
