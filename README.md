@@ -2,8 +2,6 @@
 
 An OCR (Optical Character Recognition) application built using the MERN stack.
 
-## WEBSITE LINK
-https://thaiid-ocr-app-production-4cba.up.railway.app/
 
 ## Overview
 
@@ -33,9 +31,7 @@ This application allows users to upload images containing text and performs OCR 
 - **`uploads/`**: Folder for storing user-uploaded images.
 - **`public/`**: Static assets served by Express.js.
   
-  ## Setup
+## image for demo purpose
+![thaicard](https://github.com/GautamKJ/ThaiID-OCR-APP/assets/97722291/5141990a-6882-4f74-b39b-e696f506eb03)
 
-1. Clone the repository.
-   ```bash
-   git clone <repository-url>
    
