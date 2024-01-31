@@ -69,7 +69,7 @@ export default function View() {
 		try {
 			
 			const response=await fetch(`https://thai-ocr-zf8n.onrender.com/api/deleterecord/${id}`,{
-			  method:"POST",
+			  method:"DELETE",
 			
 			});
 			
