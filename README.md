@@ -32,6 +32,7 @@ This application allows users to upload images containing text and performs OCR 
 - **`public/`**: Static assets served by Express.js.
   
 ## image for demo purpose
+
 ![thaicard](https://github.com/GautamKJ/ThaiID-OCR-APP/assets/97722291/5141990a-6882-4f74-b39b-e696f506eb03)
 
 ## web page
