@@ -5,7 +5,7 @@ An OCR (Optical Character Recognition) application built using the MERN stack.
 
 ## Overview
 
-This application allows users to upload images containing text and performs OCR to extract text information from the images. The extracted information is then processed and displayed to the user.
+This application allows users to upload images containing text and performs OCR to extract text information from the image. The extracted information is then processed and displayed to the user.
 
 ## Features
 
