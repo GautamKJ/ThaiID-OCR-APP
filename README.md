@@ -19,9 +19,9 @@ This application allows users to upload images containing text and performs OCR 
 ## Technologies Used
 
 - MongoDB: NoSQL database for storing user data.
-- Express.js: Web application framework for Node.js.
-- React.js: JavaScript library for building user interfaces.
-- Node.js: JavaScript runtime for server-side development.
+- ExpressJs: Web application framework for NodeJs.
+- ReactJs: JavaScript library for building user interfaces.
+- NodeJs: JavaScript runtime for server-side development.
 - OCR API: An Optical Character Recognition API for text extraction.
 
 ## Folder Structure
